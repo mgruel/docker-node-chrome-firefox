@@ -1,4 +1,4 @@
-FROM buildpack-deps:jessie-curl
+FROM buildpack-deps:jessie-scm
 
 # Install node 5.x
 RUN set -x \

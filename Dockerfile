@@ -27,6 +27,18 @@ RUN set -x \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
+# Install maven
+ENV MAVEN_VERSION 3.3.9
+
+RUN mkdir -p /usr/share/maven \
+  && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
+    | tar -xzC /usr/share/maven --strip-components=1 \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+
+ENV MAVEN_HOME /usr/share/maven
+
+VOLUME /root/.m2
+
 # Install Chrome
 RUN set -x \
     && apt-get update \
@@ -51,5 +63,6 @@ RUN ln -sf /usr/bin/xvfb-firefox /usr/bin/firefox
 # RUN node -v
 # RUN npm -v
 # RUN java -version
+# RUN mvn -v
 # RUN apt-cache policy iceweasel | grep Installed | sed -e "s/Installed/Firefox/"
 # RUN apt-cache policy chromium | grep Installed | sed -e "s/Installed/Chrome/"

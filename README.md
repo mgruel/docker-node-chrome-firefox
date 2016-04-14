@@ -4,6 +4,7 @@ This Dockerfile contains:
 
 * SCM tools
 * Java 8
+* Maven 3.3.9
 * Node 5.x
 * Chrome (Chromium) latest
 * Firefox (Iceweasel) latest

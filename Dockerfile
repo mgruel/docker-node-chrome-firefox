@@ -53,10 +53,3 @@ RUN ln -sf /usr/bin/xvfb-firefox /usr/bin/firefox
 # RUN java -version
 # RUN apt-cache policy iceweasel | grep Installed | sed -e "s/Installed/Firefox/"
 # RUN apt-cache policy chromium | grep Installed | sed -e "s/Installed/Chrome/"
-
-WORKDIR /usr/src/app
-
-ONBUILD COPY .npmrc /usr/src/app/.npmrc
-ONBUILD COPY package.json /usr/src/app/package.json
-ONBUILD RUN npm install
-ONBUILD COPY . /usr/src/app

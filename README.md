@@ -7,7 +7,7 @@ This Dockerfile contains:
 * Maven 3.3.9
 * Node 5.x
 * Chrome (Chromium) latest
-* Firefox (Iceweasel) latest
+* Firefox ESR latest
 
 ## How to build the image
 ```

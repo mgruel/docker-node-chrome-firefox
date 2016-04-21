@@ -8,6 +8,7 @@ This Dockerfile contains:
 * Node 5.x
 * Chrome (Chromium) latest
 * Firefox ESR latest
+* Bzip2 (for PhantomJS install)
 
 ## How to build the image
 ```

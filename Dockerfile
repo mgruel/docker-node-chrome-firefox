@@ -72,6 +72,12 @@ RUN ln -sf /usr/bin/xvfb-firefox /usr/bin/firefox
 
 ENV FIREFOX_BIN /usr/bin/firefox
 
+# This is needed for PhantomJS
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y \
+        bzip2
+
 # RUN node -v
 # RUN npm -v
 # RUN java -version

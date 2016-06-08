@@ -1,6 +1,6 @@
 FROM buildpack-deps:jessie-scm
 
-# Install node 5.x
+# Install node
 RUN set -x \
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y \

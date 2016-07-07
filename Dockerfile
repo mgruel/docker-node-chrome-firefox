@@ -82,7 +82,8 @@ ENV FIREFOX_BIN /usr/bin/firefox
 RUN set -x && \
     apt-get update && \
     apt-get install -y \
-        bzip2
+        bzip2 \
+        zip
 
 # RUN node -v
 # RUN npm -v

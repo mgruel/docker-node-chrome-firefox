@@ -9,6 +9,7 @@ This Dockerfile contains:
 * Google Chrome latest
 * Firefox ESR latest
 * Bzip2 (for PhantomJS install)
+* Zip
 
 ## How to build the image
 ```

@@ -1,12 +1,5 @@
 FROM buildpack-deps:jessie-scm
 
-# Install node 8
-RUN set -x \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install -y \
-        nodejs \
-    && npm install -g npm@latest
-
 # Install Java 8
 
 RUN echo 'deb http://httpredir.debian.org/debian jessie-backports main' >> /etc/apt/sources.list.d/jessie-backports.list
@@ -43,6 +36,13 @@ RUN mkdir -p /usr/share/maven \
 ENV MAVEN_HOME /usr/share/maven
 
 VOLUME /root/.m2
+
+# Install node 8
+RUN set -x \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y \
+        nodejs \
+    && npm install -g npm@latest
 
 # Install Chrome
 

@@ -42,7 +42,7 @@ RUN set -x \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt-get install -y \
         nodejs \
-    && npm install -g npm@latest
+    && npm install -g npm@latest yarn@latest
 
 # Install Chrome
 
@@ -92,6 +92,7 @@ RUN set -x && \
 
 # RUN node -v
 # RUN npm -v
+# Run yarn -v
 # RUN java -version
 # RUN mvn -v
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"

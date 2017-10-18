@@ -21,7 +21,12 @@ RUN locale-gen $LANG
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -y \
+    && apt-get install -y -t \
+        jessie-backports \
+        ca-certificates-java \
+        openjdk-8-jre-headless \
+        openjdk-8-jre \
+        openjdk-8-jdk-headless \
         openjdk-8-jdk
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/

@@ -1,12 +1,5 @@
 FROM buildpack-deps:jessie-scm
 
-# Install node
-RUN set -x \
-    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
-    && apt-get install -y \
-        nodejs \
-    && npm install -g npm@latest
-
 # Install Java 8
 
 RUN echo 'deb http://httpredir.debian.org/debian jessie-backports main' >> /etc/apt/sources.list.d/jessie-backports.list
@@ -22,6 +15,11 @@ RUN locale-gen $LANG
 RUN set -x \
     && apt-get update \
     && apt-get install -y \
+        -t jessie-backports \
+        ca-certificates-java \
+        openjdk-8-jre-headless \
+        openjdk-8-jre \
+        openjdk-8-jdk-headless \
         openjdk-8-jdk
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
@@ -38,6 +36,13 @@ RUN mkdir -p /usr/share/maven \
 ENV MAVEN_HOME /usr/share/maven
 
 VOLUME /root/.m2
+
+# Install node 8
+RUN set -x \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y \
+        nodejs \
+    && npm install -g npm@latest yarn@latest
 
 # Install Chrome
 
@@ -63,7 +68,7 @@ RUN set -x \
     && apt-get install -y \
         pkg-mozilla-archive-keyring
 
-RUN echo 'deb http://mozilla.debian.net/ jessie-backports firefox-esr' >> /etc/apt/sources.list.d/jessie-backports.list
+RUN echo 'deb http://security.debian.org/ jessie/updates main' >> /etc/apt/sources.list.d/jessie-updates.list
 
 RUN set -x \
     && apt-get update \
@@ -87,6 +92,7 @@ RUN set -x && \
 
 # RUN node -v
 # RUN npm -v
+# RUN yarn -v
 # RUN java -version
 # RUN mvn -v
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"

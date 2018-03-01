@@ -14,8 +14,8 @@ RUN locale-gen $LANG
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -y -t \
-        jessie-backports \
+    && apt-get install -y \
+        -t jessie-backports \
         ca-certificates-java \
         openjdk-8-jre-headless \
         openjdk-8-jre \
@@ -92,7 +92,7 @@ RUN set -x && \
 
 # RUN node -v
 # RUN npm -v
-# Run yarn -v
+# RUN yarn -v
 # RUN java -version
 # RUN mvn -v
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"

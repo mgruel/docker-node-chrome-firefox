@@ -6,17 +6,16 @@ pipelines:
     master:
       - step:
           script:
-            #- export IMAGE_NAME=atlassianlabs/docker-node-jdk-chrome-firefox:latest
-            #- docker build -t $IMAGE_NAME .
-            #- docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-            #- docker push $IMAGE_NAME
-            - DATE=`date +%Y-%m-%d`
-            - echo $DATE
+            - export IMAGE_NAME=atlassianlabs/docker-node-jdk-chrome-firefox:latest
+            - docker build -t $IMAGE_NAME .
+            - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+            - docker push $IMAGE_NAME
   custom:
     deployment-to-hub-docker:
       - step:
           script:
-            - export IMAGE_NAME=atlassianlabs/docker-node-jdk-chrome-firefox:latest
+            - DATE=`date +%Y-%m-%d`
+            - export IMAGE_NAME=atlassianlabs/docker-node-jdk-chrome-firefox:DATE
             - docker build -t $IMAGE_NAME .
             - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
             - docker push $IMAGE_NAME

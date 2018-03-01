@@ -10,8 +10,8 @@ pipelines:
             #- docker build -t $IMAGE_NAME .
             #- docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
             #- docker push $IMAGE_NAME
-            - echo Sys.time()
-            - echo "`r format(Sys.time(), '%d %B %Y')`"
+            - DATE=`date +%Y-%m-%d`
+            - echo $DATE
   custom:
     deployment-to-hub-docker:
       - step:

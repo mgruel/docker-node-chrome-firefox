@@ -40,9 +40,25 @@ VOLUME /root/.m2
 # Install node 8
 RUN set -x \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get update \
     && apt-get install -y \
         nodejs \
-    && npm install -g npm@latest yarn@latest
+    && npm install -g npm@latest
+
+# Make 'node' available
+RUN set -x \
+    && touch ~/.bashrc \
+    && echo 'alias nodejs=node' > ~/.bashrc
+
+# Install yarn 1.7+
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo 'deb https://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
+
+RUN set -x \
+    && apt-get update \
+    && apt-get install -y \
+        yarn
 
 # Install Chrome
 

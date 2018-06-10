@@ -112,4 +112,4 @@ RUN set -x && \
 # RUN java -version
 # RUN mvn -v
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"
-# RUN apt-cache policy chromium | grep Installed | sed -e "s/Installed/Chrome/"
+# RUN apt-cache policy google-chrome-stable | grep Installed | sed -e "s/Installed/Chrome/"

@@ -2,6 +2,11 @@ options:
   docker: true
 
 pipelines:
+  default:
+    - step:
+        script:
+          - export IMAGE_NAME=atlassianlabs/docker-node-jdk-chrome-firefox:latest
+          - docker build -t $IMAGE_NAME .
   branches:
     master:
       - step:

@@ -1,8 +1,6 @@
-FROM buildpack-deps:jessie-scm
+FROM buildpack-deps:stretch-scm
 
 # Install Java 8
-
-RUN echo 'deb http://httpredir.debian.org/debian jessie-backports main' >> /etc/apt/sources.list.d/jessie-backports.list
 
 RUN set -x \
     && apt-get update \
@@ -15,7 +13,6 @@ RUN locale-gen $LANG
 RUN set -x \
     && apt-get update \
     && apt-get install -y \
-        -t jessie-backports \
         ca-certificates-java \
         openjdk-8-jre-headless \
         openjdk-8-jre \
@@ -37,9 +34,9 @@ ENV MAVEN_HOME /usr/share/maven
 
 VOLUME /root/.m2
 
-# Install node 8
+# Install node 10
 RUN set -x \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get update \
     && apt-get install -y \
         nodejs \
@@ -84,14 +81,12 @@ RUN set -x \
     && apt-get install -y \
         pkg-mozilla-archive-keyring
 
-RUN echo 'deb http://security.debian.org/ jessie/updates main' >> /etc/apt/sources.list.d/jessie-updates.list
 
 RUN set -x \
     && apt-get update \
     && apt-get install -y \
         xvfb \
-    && apt-get install -y -t \
-        jessie-backports \
+    && apt-get install -y \
         firefox-esr
 
 ADD scripts/xvfb-firefox /usr/bin/xvfb-firefox
